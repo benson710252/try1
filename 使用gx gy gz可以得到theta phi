@@ -1,0 +1,77 @@
+    include<stdio.h>
+
+    #include<stdlib.h>
+
+    #include<math.h>
+
+    #define g 9.81
+
+    #define psi_md 3.00
+
+    int main()
+
+    {
+
+        float gx, gy, gz;
+
+        float Hx, Hy, Hz;
+
+        float H1, H2;
+
+        float theta, phi, psi, psi_M;
+
+        float U, V, W, p, q, r;
+
+        float U_dot, V_dot, W_dot;
+
+        float ay, ax, az;
+
+        scanf("%f %f %f", &gx, &gy, &gz);
+
+        scanf("%f %f %f", &Hx, &Hy, &Hz);
+
+        //scanf(" U = %f V = %f W = %f ",&U,&V,&W);
+
+        //scanf(" p = %f q = %f r = %f ",&p,&q,&r);
+
+        //scanf(" U_dot = %f V_dot = %f W_dot %f ",&U_dot, &V_dot, &W_dot);
+
+        //gx = ax - U_dot - (W * q - V * r);
+
+        //gy = ay - V_dot - (U * r - W * p);
+
+        //gz = az - W_dot - (V * p - U * q);
+
+        //gx = -1 * g * sin( theta );
+
+        //gy = g * sin( phi ) * cos( theta );
+
+        //gz = g * cos( phi ) * cos( theta );
+
+        H1 = Hx * cos( theta ) + Hy * sin( phi ) * sin( theta ) + Hz * cos( phi ) * sin( theta );
+
+        H2 = Hy * cos( phi ) - Hz * sin( phi );
+
+        psi_M = atan( H2 / H1 );
+
+        psi = psi_M + psi_md;
+
+        theta = asin( gx / g );
+
+        phi = atan( gy / gz );
+
+        printf("H1 = %5.3f H2 = %5.3f ",H1, H2);
+
+        printf("theta = %5.3f phi = %5.3f ",theta, phi);
+
+        system("pause");
+
+        return 0 ;
+
+        
+
+        
+
+        
+
+    }
